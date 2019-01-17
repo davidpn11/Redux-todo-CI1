@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-
+import { toggleTodo } from './actions'
 const Todo = styled.li`
   cursor: pointer;
   text-decoration: ${props => (props.completed ? 'line-through' : 'none')};
@@ -43,9 +43,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    toggleTodo: id => {
-      dispatch({ type: 'TOGGLE_TODO', payload: id })
-    },
+    toggleTodo: id => dispatch(toggleTodo(id)),
   }
 }
 export default connect(

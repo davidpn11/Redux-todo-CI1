@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
 import { addTodo } from './actions'
@@ -35,30 +35,6 @@ export class AddTodo extends React.Component {
     )
   }
 }
-// export function AddTodo({ addTodo }) {
-//   const [input, useInput] = useState('')
-//   const addInput = () => {
-//     const todo = {
-//       id: uuid.v4(),
-//       value: input,
-//       completed: false,
-//     }
-//     addTodo(todo)
-//     useInput('')
-//   }
-
-//   return (
-//     <div>
-//       <h2>{input || 'ok'}</h2>
-//       <input
-//         type="text"
-//         value={input}
-//         onChange={event => useInput(event.target.value)}
-//       />
-//       <button onClick={addInput}>Add</button>
-//     </div>
-//   )
-// }
 
 function mapDispatchToProps(dispatch) {
   return {

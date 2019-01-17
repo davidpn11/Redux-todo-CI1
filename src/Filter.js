@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
+import { setFilter } from './actions'
 const Link = styled.a`
   margin-left: 5px;
 `
@@ -23,7 +24,7 @@ function Filter({ setFilter }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setFilter: filter => dispatch({ type: 'SET_FILTER', payload: filter }),
+    setFilter: filter => dispatch(setFilter(filter)),
   }
 }
 
