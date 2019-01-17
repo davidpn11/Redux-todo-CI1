@@ -3,7 +3,17 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { setFilter } from './actions'
 import { reactBlue, whiteSmoke } from './colors'
+
+const FilterWrapper = styled.div`
+  margin: 20px 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 const Link = styled.a`
+  width: 100%;
+  text-align: center;
   border: 1px solid ${reactBlue};
   border-radius: 10px;
   text-decoration: none;
@@ -12,7 +22,7 @@ const Link = styled.a`
   background-color: ${props => (props.active ? reactBlue : 'transparent')}
   font-size: 16px;
   padding: 5px 10px;
-  margin-left: 5px;
+  margin: 0 10px;
 
   &:hover {
     background-color: ${reactBlue};
@@ -23,7 +33,7 @@ const Link = styled.a`
 
 function Filter({ setFilter, activeFilter }) {
   return (
-    <div>
+    <FilterWrapper>
       <Link
         onClick={() => setFilter('all')}
         href="#"
@@ -45,7 +55,7 @@ function Filter({ setFilter, activeFilter }) {
       >
         Completed
       </Link>
-    </div>
+    </FilterWrapper>
   )
 }
 

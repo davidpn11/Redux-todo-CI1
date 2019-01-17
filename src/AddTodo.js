@@ -5,11 +5,18 @@ import { addTodo } from './actions'
 import styled from 'styled-components'
 import { reactBlue, whiteSmoke } from './colors'
 
+const TodoWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 const TodoInput = styled.input`
   border: 1px solid ${whiteSmoke};
   border-radius: 10px;
   outline: none;
   font-size: 16px;
+  width: 100%;
   padding: 5px 10px;
   margin-right: 5px;
   &:focus {
@@ -58,16 +65,17 @@ export class AddTodo extends React.Component {
   render() {
     const { input } = this.state
     return (
-      <div>
+      <TodoWrapper>
         <TodoInput
           type="text"
           value={input}
           onChange={event => this.useInput(event.target.value)}
+          onKeyPress={({ key }) => key === 'Enter' && this.addInput()}
         />
         <AddButton disabled={input === ''} onClick={this.addInput}>
           Add
         </AddButton>
-      </div>
+      </TodoWrapper>
     )
   }
 }
