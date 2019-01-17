@@ -7,10 +7,16 @@ import AddTodo from './AddTodo'
 import Todos from './Todos'
 import Filter from './Filter'
 import styled from 'styled-components'
+import { saveState, loadState } from './persistStore'
 const store = createStore(
   rootReducer /* preloadedState, */,
+  loadState(),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
+
+store.subscribe(() => {
+  saveState(store.getState())
+})
 const Wrapper = styled.div`
   display: flex;
   height: 100%;
