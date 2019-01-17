@@ -4,13 +4,11 @@ import { AddTodo } from '../AddTodo'
 import { configure, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import toJson from 'enzyme-to-json'
-import uuid from 'uuid'
 
 configure({ adapter: new Adapter() })
 
 describe('AddTodo', () => {
   it('call addTodo', () => {
-    const id = uuid.v4()
     const props = {
       addTodo: jest.fn(),
     }

@@ -2,6 +2,48 @@ import React from 'react'
 import uuid from 'uuid'
 import { connect } from 'react-redux'
 import { addTodo } from './actions'
+import styled from 'styled-components'
+import { reactBlue, whiteSmoke } from './colors'
+
+const TodoWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+const TodoInput = styled.input`
+  border: 1px solid ${whiteSmoke};
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  padding: 5px 10px;
+  margin-right: 5px;
+  &:focus {
+    border: 1px solid ${reactBlue};
+  }
+`
+const AddButton = styled.button`
+  border: 1px solid ${reactBlue};
+  border-radius: 10px;
+  background-color: transparent;
+  color: ${reactBlue};
+  font-size: 16px;
+  padding: 5px 10px;
+  &:disabled {
+    border: 1px solid ${whiteSmoke};
+    color: ${whiteSmoke};
+    &:hover {
+      background-color: transparent;
+      color: ${whiteSmoke};
+    }
+  }
+  &:hover {
+    background-color: ${reactBlue};
+    color: white;
+  }
+`
+
 export class AddTodo extends React.Component {
   state = {
     input: '',
@@ -23,15 +65,17 @@ export class AddTodo extends React.Component {
   render() {
     const { input } = this.state
     return (
-      <div>
-        <h2>{input || 'ok'}</h2>
-        <input
+      <TodoWrapper>
+        <TodoInput
           type="text"
           value={input}
           onChange={event => this.useInput(event.target.value)}
+          onKeyPress={({ key }) => key === 'Enter' && this.addInput()}
         />
-        <button onClick={this.addInput}>Add</button>
-      </div>
+        <AddButton disabled={input === ''} onClick={this.addInput}>
+          Add
+        </AddButton>
+      </TodoWrapper>
     )
   }
 }
