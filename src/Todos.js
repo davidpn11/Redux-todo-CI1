@@ -1,15 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { toggleTodo } from './actions'
+import { reactBlue } from './colors'
+const TodoList = styled.ul`
+  list-style: none;
+  color: ${reactBlue};
+`
 
 const Todo = styled.li`
   cursor: pointer;
   text-decoration: ${props => (props.completed ? 'line-through' : 'none')};
+  opacity: ${props => (props.completed ? 0.6 : 1)};
 `
 function Todos({ todos, toggleTodo }) {
-  console.log(todos)
   return (
-    <ul>
+    <TodoList>
       {todos.map(todo => (
         <Todo
           completed={todo.completed}
@@ -19,7 +25,7 @@ function Todos({ todos, toggleTodo }) {
           {todo.value}
         </Todo>
       ))}
-    </ul>
+    </TodoList>
   )
 }
 

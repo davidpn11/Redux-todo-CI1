@@ -8,12 +8,6 @@ import toJson from 'enzyme-to-json'
 
 configure({ adapter: new Adapter() })
 
-class Link extends React.Component {
-  render() {
-    return <div>{this.props.hide ? null : <a href={this.props.url} />}</div>
-  }
-}
-
 describe('SingleTodo', () => {
   const wrapper = shallow(<SingleTodoNoRedux />)
   const input = wrapper.find('input')
@@ -48,31 +42,3 @@ describe('SingleTodo', () => {
     ).toBe(false)
   })
 })
-
-describe('App', () => {
-  const wrapper = shallow(<App />)
-
-  it('has title', () => {
-    expect(wrapper.find('h1').text()).toBe('Todos')
-  })
-  // it('add ')
-})
-
-describe('Link', () => {
-  it('as url props', () => {
-    const wrapper = shallow(<Link url="google.com" />)
-    expect(wrapper.instance().props.url).toBe('google.com')
-  })
-  it('hide element', () => {
-    const wrapper = shallow(<Link url="google.com" />)
-    expect(wrapper.find('a').length).toBe(1)
-    wrapper.setProps({ hide: true })
-    expect(wrapper.find('a').length).toBe(0)
-  })
-})
-
-// it('renders without crashing', () => {
-//   const div = document.createElement('div')
-//   ReactDOM.render(<App />, div)
-//   ReactDOM.unmountComponentAtNode(div)
-// })

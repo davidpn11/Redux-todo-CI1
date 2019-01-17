@@ -1,7 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-
 import rootReducer from './reducers'
 import './styles.css'
 import AddTodo from './AddTodo'
@@ -16,7 +15,6 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <h1>Todos</h1>
         <AddTodo />
         <Todos />
         <Filter />
