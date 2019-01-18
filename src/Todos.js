@@ -15,6 +15,7 @@ const Todo = styled.li`
   margin: 10px 0;
   cursor: pointer;
   text-decoration: ${props => (props.completed ? 'line-through' : 'none')};
+  font-size: 18px;
   opacity: ${props => (props.completed ? 0.6 : 1)};
   &:hover {
     text-decoration: underline;
