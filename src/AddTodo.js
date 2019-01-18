@@ -5,13 +5,13 @@ import { addTodo } from './actions'
 import styled from 'styled-components'
 import { reactBlue, whiteSmoke } from './colors'
 
-const TodoWrapper = styled.div`
+const StyledTodoWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
-const TodoInput = styled.input`
+export const StyledTodoInput = styled.input`
   border: 1px solid ${whiteSmoke};
   border-radius: 10px;
   outline: none;
@@ -23,7 +23,7 @@ const TodoInput = styled.input`
     border: 1px solid ${reactBlue};
   }
 `
-const AddButton = styled.button`
+export const StyledAddButton = styled.button`
   border: 1px solid ${reactBlue};
   border-radius: 10px;
   background-color: transparent;
@@ -65,17 +65,17 @@ export class AddTodo extends React.Component {
   render() {
     const { input } = this.state
     return (
-      <TodoWrapper>
-        <TodoInput
+      <StyledTodoWrapper>
+        <StyledTodoInput
           type="text"
           value={input}
           onChange={event => this.useInput(event.target.value)}
           onKeyPress={({ key }) => key === 'Enter' && this.addInput()}
         />
-        <AddButton disabled={input === ''} onClick={this.addInput}>
+        <StyledAddButton disabled={input === ''} onClick={this.addInput}>
           Add
-        </AddButton>
-      </TodoWrapper>
+        </StyledAddButton>
+      </StyledTodoWrapper>
     )
   }
 }
